@@ -1,0 +1,31 @@
+<div class="header">
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" routerLink="/">Logo</a>
+    <button class="navbar-toggler navbar-light bg-light" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon navbar-light bg-light"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav navbar-right ml-lg-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/auth">Inscription</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login">Connexion</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="hero text-center">
+    <h1>Projet 4</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ut tempor enim.</p>
+  </div>
+
+  <div class="row searchFilter">
+    <form class="input-group" method="POST">
+      <input id="from" type="text" class="form-control calendar" placeholder="De" data-provide="datepicker">
+      <input id="to" type="text" class="form-control calendar" name="search" placeholder="A" data-provide="datepicker">
+      <input id="where" type="text" class="form-control" name="search" placeholder="Ou?">
+      <input id="searchBtn" type="submit"  class="form-control input-group-btn btn-secondary btn-search" value="Rechercher">
+    </form>
+  </div>
+</div>
