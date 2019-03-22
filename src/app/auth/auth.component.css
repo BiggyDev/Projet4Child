@@ -1,19 +1,19 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans|Oswald");
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 /** Variables
  ---------------------------------------------------------*/
 body,
 html {
   margin: 0;
   height: 100%;
-  font-family: "Open Sans";
+  font-family: "Roboto";
   font-size: 1em;
   overflow: hidden; }
 
 h1 {
-  font-family: "Oswald";
+  font-family: "Roboto";
   font-weight: 400;
   letter-spacing: 1px;
-  color: #DDDDDD;
+  color: #FFFFFF;
   margin-bottom: 55px; }
 
 .content-wrapper {
@@ -97,7 +97,7 @@ h1 {
  ---------------------------------------------------------*/
 .input {
   position: relative;
-  width: 300px;
+  width: 90%;
   margin-bottom: 25px; }
   .input input {
     background: transparent;
@@ -109,16 +109,16 @@ h1 {
     width: 100%;
     border: none;
     color: white;
-    font-family: "Open Sans";
-    border-bottom: 1px solid #DDDDDD; }
+    font-family: "Roboto";
+    border-bottom: 1px solid #FFFFFF; }
   .input label {
-    color: #DDDDDD;
+    color: #FFFFFF;
     font-size: 0.85em;
     font-weight: normal;
     position: absolute;
     pointer-events: none;
     left: 5px;
-    font-family: "Open Sans";
+    font-family: "Roboto";
     top: 15px;
     transition: 0.195s ease all;
     text-transform: uppercase; }
@@ -131,7 +131,7 @@ h1 {
   width: 0;
   bottom: 1px;
   left: 0;
-  background: #DA2E44;
+  background: #ff4f5a;
   transition: all 0.195s ease; }
 
 input:focus ~ .bar,
@@ -144,20 +144,20 @@ textarea:focus ~ label,
 textarea:valid ~ label {
   top: -10px;
   font-size: 0.55em;
-  color: #DDDDDD; }
+  color: #FFFFFF; }
 
 /** Buttons
  ---------------------------------------------------------*/
 .button-square,
 .button-transparent,
 button {
-  font-family: "Oswald";
+  font-family: "Roboto";
   position: relative;
   display: inline-block;
   padding: 12px 25px;
   margin: 20px 0;
-  background-color: #DA2E44;
-  color: #DDDDDD;
+  background-color: #ff4f5a;
+  color: #FFFFFF;
   border-radius: 0;
   transition: all 0.3s;
   letter-spacing: 2px;
@@ -170,14 +170,14 @@ button {
   .button-square:hover,
   .button-transparent:hover,
   button:hover {
-    background-color: #9f1c2d; }
+    background-color: #ff0312; }
 
 .button-transparent {
   justify-content: center;
   align-items: center;
-  color: #DDDDDD;
+  color: #FFFFFF;
   background-color: transparent; }
   .button-transparent:hover {
-    background-color: rgba(221, 221, 221, 0.15); }
+    background-color: rgba(255, 255, 255, 0.15); }
 
 /*# sourceMappingURL=auth.component.css.map */

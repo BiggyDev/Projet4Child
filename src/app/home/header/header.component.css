@@ -1,15 +1,15 @@
 body {
-  font-family: "Montserrat", sans-serif; }
+  font-family: "Roboto", sans-serif; }
 
 a {
   cursor: pointer; }
 
 .header {
-  background: gray;
+  background: #ff4f5a;
   color: white;
   background-size: cover;
   background-position: bottom;
-  height: 50em; }
+  height: 100vh; }
 
 .bg {
   background: transparent; }
@@ -34,15 +34,15 @@ a {
 
 /*Barre de navigation */
 .nav-item .nav-link {
-  color: #00aced;
-  text-transform: uppercase; }
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 5px; }
 
-.dark-blue-text {
-  color: blue; }
+.nav-link:hover {
+  color: #ff4f5a; }
 
-.menu-burger {
-  height: 100%;
-  width: 100%;
+.navbar-light .navbar-toggler-icon {
   background-image: url("../../../assets/img/menu.svg"); }
 
 .searchFilter {
@@ -73,49 +73,29 @@ a {
   height: 50px;
   min-width: 20px; }
 
-.searchFilter .btn-secondary {
-  color: #373a3c;
-  background-color: #fff;
-  border: 1px solid #ccc; }
-
-.searchFilter .btn-secondary:hover {
-  color: #373a3c;
-  background-color: #e6e6e6;
-  border-color: #adadad; }
+.searchFilter .btn-search:hover {
+  background-color: #ffcb0f;
+  color: white;
+  border: solid #ffcb0f; }
 
 .searchFilter .btn-search {
-  background-color: #00aced;
-  color: #fff;
-  border: 1px solid #00aced; }
+  background-color: #ff4f5a;
+  color: white;
+  border: solid white; }
 
-.searchFilter .btn-search:hover {
-  background-color: #06b287;
-  color: #fff;
-  border: 1px solid #06b287; }
+.search-logo {
+  width: 25px;
+  height: 25px; }
 
-.searchFilter .label-icon {
-  display: none; }
+#auth .btn {
+  border: solid 1.5px #f8f9fa; }
 
-.searchFilter .glyphicon {
-  margin-right: -15px; }
+#auth .btn:hover {
+  color: #ff4f5a;
+  background-color: #f8f9fa; }
 
-.searchFilter .dropdown-menu .category_filters {
-  min-width: 178px;
-  width: 100%; }
-
-.searchFilter .dropdown-menu-right {
-  right: 167px;
-  width: 172px;
-  top: 90%; }
-
-.searchFilter .dropdown-menu .category_filters li {
-  list-style-type: none;
-  padding: 2px 10px;
-  font-size: 14px;
-  color: #000000; }
-
-.searchFilter .dropdown-menu .category_filters label {
-  margin-left: 15px;
-  font-weight: lighter; }
+.form-control {
+  border-radius: 50px;
+  height: 50px; }
 
 /*# sourceMappingURL=header.component.css.map */

@@ -1,14 +1,15 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Oswald');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 /** Variables
  ---------------------------------------------------------*/
 
-$font_heading: "Oswald";
-$font_reg: "Open Sans";
-$color_primary: #DA2E44;
+$search-button-color: #ffcb0f;
+$font_heading: "Roboto";
+$font_reg: "Roboto";
+$color_primary: #ff4f5a;
 $color_secondary: #434C5F;
 $color_third: #8cbde0;
-$color_text_primary: #DDDDDD;
+$color_text_primary: #FFFFFF;
 $radius: 0;
 body,
 html {
@@ -119,7 +120,7 @@ form {
 
 .input {
   position: relative;
-  width: 300px;
+  width: 90%;
   margin-bottom: 25px;
 input {
   background: transparent;

@@ -1,15 +1,19 @@
+$primary-color: #ff4f5a
+$text-color: white
+$search-button-color: #ffcb0f
+
 body
-  font-family: 'Montserrat', sans-serif
+  font-family: 'Roboto', sans-serif
 
 a
   cursor: pointer
 
 .header
-  background: gray
+  background: $primary-color
   color: white
   background-size: cover
   background-position: bottom
-  height: 50em
+  height: 100vh
 
 
 .bg
@@ -41,17 +45,18 @@ a
 /*Barre de navigation*/
 
 .nav-item .nav-link
-  color: #00aced
+  color: white
   text-transform: uppercase
+  font-weight: bold
+  margin: 5px
 
 
-.dark-blue-text
-  color: blue
+.nav-link:hover
+  color: $primary-color
 
-.menu-burger
-  height: 100%
-  width: 100%
+.navbar-light .navbar-toggler-icon
   background-image: url("../../../assets/img/menu.svg")
+
 
 .searchFilter
   height: 20vh
@@ -81,47 +86,28 @@ a
   height: 50px
   min-width: 20px
 
-.searchFilter .btn-secondary
-  color: #373a3c
-  background-color: #fff
-  border: 1px solid #ccc
-
-.searchFilter .btn-secondary:hover
-  color: #373a3c
-  background-color: #e6e6e6
-  border-color: #adadad
+.searchFilter .btn-search:hover
+  background-color: $search-button-color
+  color: $text-color
+  border: solid $search-button-color
 
 .searchFilter .btn-search
-  background-color: #00aced
-  color: #fff
-  border: 1px solid #00aced
+  background-color: $primary-color
+  color: $text-color
+  border: solid $text-color
 
-.searchFilter .btn-search:hover
-  background-color: #06b287
-  color: #fff
-  border: 1px solid #06b287
+.search-logo
+  width: 25px
+  height: 25px
 
-.searchFilter .label-icon
-  display: none
+#auth .btn
+  border: solid 1.5px #f8f9fa
 
-.searchFilter .glyphicon
-  margin-right: -15px
+#auth .btn:hover
+  color: $primary-color
+  background-color: #f8f9fa
 
-.searchFilter .dropdown-menu .category_filters
-  min-width: 178px
-  width: 100%
+.form-control
+  border-radius: 50px
+  height: 50px
 
-.searchFilter .dropdown-menu-right
-  right: 167px
-  width: 172px
-  top: 90%
-
-.searchFilter .dropdown-menu .category_filters li
-  list-style-type: none
-  padding: 2px 10px
-  font-size: 14px
-  color: #000000
-
-.searchFilter .dropdown-menu .category_filters label
-  margin-left: 15px
-  font-weight: lighter

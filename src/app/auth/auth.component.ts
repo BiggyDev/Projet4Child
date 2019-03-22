@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { FormsModule } from '@angular/forms';
 import * as $ from 'jquery';
 
 @Component({
