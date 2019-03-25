@@ -1,0 +1,26 @@
+#carouselOne, #carouselTwo {
+  border: none;
+  width: 100%;
+  margin-top: 30px; }
+
+.card {
+  margin: 0.5em 10em; }
+
+.card-title {
+  font-weight: bold; }
+
+.card-img-top {
+  border: 3px silver solid; }
+
+.button_home {
+  background-color: #ff4f5a;
+  color: #FFFFFF; }
+
+.button_home:hover {
+  color: #ff4f5a;
+  background-color: #FFFFFF; }
+
+.carousel-control-prev, .carousel-control-next {
+  color: #ff4f5a; }
+
+/*# sourceMappingURL=review.component.css.map */
