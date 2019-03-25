@@ -1,6 +1,6 @@
 #carouselOne, #carouselTwo {
   border: none;
-  width: 50%;
+  width: 100%;
   margin-top: 30px; }
 
 .card {
@@ -19,5 +19,8 @@
 .button_home:hover {
   color: #ff4f5a;
   background-color: #FFFFFF; }
+
+.carousel-control-prev, .carousel-control-next {
+  color: #ff4f5a; }
 
 /*# sourceMappingURL=review.component.css.map */
