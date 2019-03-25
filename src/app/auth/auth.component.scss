@@ -7,9 +7,9 @@ $search-button-color: #ffcb0f;
 $font_heading: "Roboto";
 $font_reg: "Roboto";
 $color_primary: #ff4f5a;
-$color_secondary: #434C5F;
+$color_secondary: #ff4f5a;
 $color_third: #8cbde0;
-$color_text_primary: #FFFFFF;
+$color_text_primary: #ffffff;
 $radius: 0;
 body,
 html {
@@ -199,7 +199,8 @@ button {
   border: none;
   text-transform: uppercase;
 &:hover {
-  background-color: darken($color_primary, 15%);
+  background-color: $color_text_primary;
+  color: $color_secondary;
 }
 }
 
@@ -209,6 +210,7 @@ button {
   color: $color_text_primary;
   background-color: transparent;
 &:hover {
-  background-color: rgba($color_text_primary, .15);
+  background-color: $color_text_primary;
+  color: $color_secondary;
 }
 }

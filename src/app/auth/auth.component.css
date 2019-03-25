@@ -13,7 +13,7 @@ h1 {
   font-family: "Roboto";
   font-weight: 400;
   letter-spacing: 1px;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 55px; }
 
 .content-wrapper {
@@ -79,7 +79,7 @@ h1 {
     align-items: center;
     box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    background-color: #434C5F; }
+    background-color: #ff4f5a; }
     .content-wrapper .floating-content::before {
       display: block;
       content: "";
@@ -89,7 +89,7 @@ h1 {
       right: 0;
       bottom: 0;
       top: 0;
-      background: linear-gradient(to top, rgba(140, 189, 224, 0.15) 0%, #434C5F 100%); }
+      background: linear-gradient(to top, rgba(140, 189, 224, 0.15) 0%, #ff4f5a 100%); }
     .content-wrapper .floating-content.active {
       margin-left: 40%; }
 
@@ -110,9 +110,9 @@ h1 {
     border: none;
     color: white;
     font-family: "Roboto";
-    border-bottom: 1px solid #FFFFFF; }
+    border-bottom: 1px solid #ffffff; }
   .input label {
-    color: #FFFFFF;
+    color: #ffffff;
     font-size: 0.85em;
     font-weight: normal;
     position: absolute;
@@ -144,7 +144,7 @@ textarea:focus ~ label,
 textarea:valid ~ label {
   top: -10px;
   font-size: 0.55em;
-  color: #FFFFFF; }
+  color: #ffffff; }
 
 /** Buttons
  ---------------------------------------------------------*/
@@ -157,7 +157,7 @@ button {
   padding: 12px 25px;
   margin: 20px 0;
   background-color: #ff4f5a;
-  color: #FFFFFF;
+  color: #ffffff;
   border-radius: 0;
   transition: all 0.3s;
   letter-spacing: 2px;
@@ -170,14 +170,16 @@ button {
   .button-square:hover,
   .button-transparent:hover,
   button:hover {
-    background-color: #ff0312; }
+    background-color: #ffffff;
+    color: #ff4f5a; }
 
 .button-transparent {
   justify-content: center;
   align-items: center;
-  color: #FFFFFF;
+  color: #ffffff;
   background-color: transparent; }
   .button-transparent:hover {
-    background-color: rgba(255, 255, 255, 0.15); }
+    background-color: #ffffff;
+    color: #ff4f5a; }
 
 /*# sourceMappingURL=auth.component.css.map */
