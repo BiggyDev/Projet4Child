@@ -1,3 +1,22 @@
-<p>
-  login works!
-</p>
+<div class="content-wrapper">
+  <div class="sing-up-panel">
+    <form>
+      <h1>Connectez-vous :</h1>
+      <div class="input">
+        <input type="email" name="email" required>
+        <div class="bar"></div>
+        <label id="email">E-Mail :</label>
+      </div>
+      <div class="input">
+        <input type="password" name="password" required>
+        <div class="bar"></div>
+        <label id="password">Mot de passe :</label>
+      </div>
+      <div class="button-wrapper">
+        <button class="sing-up" type="submit" name="submit">Connexion</button>
+      </div>
+    </form>
+    <button routerLink="/home"><a style="text-decoration: none;">Accueil</a></button>
+    <button routerLink="/auth"><a style="text-decoration: none;">S'inscrire</a></button>
+  </div>
+</div>

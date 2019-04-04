@@ -1,57 +1,57 @@
 <div class="content-wrapper">
-  <div class="background background-left"></div>
-  <div class="background background-right"></div>
+    <div class="background background-left"></div>
+    <div class="background background-right"></div>
 
-  <div class="sing-up-panel">
-    <form>
-      <h1>Vous êtes parents :</h1>
-      <div class="input">
-        <input type="email" required>
-        <div class="bar"></div>
-        <label>E-Mail</label>
-      </div>
-      <div class="input">
-        <input type="password" required>
-        <div class="bar"></div>
-        <label>Mot de passe</label>
-      </div>
-      <div class="input">
-        <input type="password" required>
-        <div class="bar"></div>
-        <label>Confirmation Mot de passe</label>
-      </div>
-      <div class="button-wrapper">
-        <button class="button-transparent sing-in" type="submit">Je veux garder des enfants</button>
-        <button class="sing-up" type="submit">S'inscrire</button>
-      </div>
-    </form>
-    <button routerLink="/home"><a style="text-decoration: none;">Accueil</a></button>
-  </div>
+    <div class="sing-up-panel">
+        <form (ngSubmit)="onSubmitClient(formClient)" #formClient="ngForm">
+            <h1>Vous êtes parents :</h1>
+            <div class="input">
+                <input type="email" name="email" required ngModel>
+                <div class="bar"></div>
+                <label>E-Mail</label>
+            </div>
+            <div class="input">
+                <input type="password" name="password" required ngModel>
+                <div class="bar"></div>
+                <label>Mot de passe</label>
+            </div>
+            <div class="input">
+                <input type="password" name="confirmpassword" required ngModel>
+                <div class="bar"></div>
+                <label>Confirmation Mot de passe</label>
+            </div>
+            <div class="button-wrapper">
+                <button class="button-transparent sing-in" type="submit">Je veux garder des enfants</button>
+                <button class="sing-up" type="submit" [disabled]="formClient.invalid">S'inscrire</button>
+            </div>
+        </form>
+        <button routerLink="/home"><a style="text-decoration: none;">Accueil</a></button>
+    </div>
 
-  <div class="sing-in-panel active">
-    <form>
-      <h1>Je veux garder des enfants :</h1>
-      <div class="input">
-        <input type="email" required>
-        <div class="bar"></div>
-        <label>E-Mail</label>
-      </div>
-      <div class="input">
-        <input type="password" required>
-        <div class="bar"></div>
-        <label>Mot de passe</label>
-      </div>
-      <div class="input">
-        <input type="password" required>
-        <div class="bar"></div>
-        <label>Confirmation Mot de passe</label>
-      </div>
-      <div class="button-wrapper">
-        <button class="sing-in" type="submit">S'inscrire</button>
-        <button class="button-transparent sing-up" type="submit">Je suis parent</button>
-      </div>
-    </form>
-    <button routerLink="/home"><a style="text-decoration: none;">Accueil</a></button>
-  </div>
-  <div class="floating-content active"></div>
+    <div class="sing-in-panel active">
+        <form (ngSubmit)="onSubmitProvider(formProvider)" #formProvider="ngForm">
+            <h1>Je veux garder des enfants :</h1>
+            <div class="input">
+                <input type="email" name="email" required ngModel>
+                <div class="bar"></div>
+                <label>E-Mail</label>
+            </div>
+            <div class="input">
+                <input type="password" name="password" required ngModel>
+                <div class="bar"></div>
+                <label>Mot de passe</label>
+            </div>
+            <div class="input">
+                <input type="password" name="confirmpassword" required ngModel>
+                <div class="bar"></div>
+                <label>Confirmation Mot de passe</label>
+            </div>
+            <div class="button-wrapper">
+                <button class="sing-in" type="submit" name="submitted" [disabled]="formProvider.invalid">S'inscrire</button>
+                <button class="button-transparent sing-up" type="submit">Je suis parent</button>
+            </div>
+        </form>
+        <button routerLink="/home"><a style="text-decoration: none;">Accueil</a></button>
+    </div>
+    <div class="floating-content active"></div>
 </div>
