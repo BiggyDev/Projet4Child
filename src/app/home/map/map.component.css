@@ -1,5 +1,7 @@
-#frugalmap {
+#map {
   height: 600px;
-  width: 100%; }
+  width: 50%;
+  margin: 30px;
+  float: right; }
 
 /*# sourceMappingURL=map.component.css.map */

@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { ProfileProComponent } from './profiles/profile-pro/profile-pro.component';
 import { ProfilePartComponent } from './profiles/profile-part/profile-part.component';
 import { HeaderProfilesComponent } from './profiles/header-profiles/header-profiles.component';
+import {HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import { HeaderProfilesComponent } from './profiles/header-profiles/header-profi
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
