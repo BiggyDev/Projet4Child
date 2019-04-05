@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { ProfileProComponent } from './profiles/profile-pro/profile-pro.component';
 import { ProfilePartComponent } from './profiles/profile-part/profile-part.component';
 import { HeaderProfilesComponent } from './profiles/header-profiles/header-profiles.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,8 +31,9 @@ import { HeaderProfilesComponent } from './profiles/header-profiles/header-profi
     HeaderProfilesComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule
+      BrowserModule,
+      AppRoutingModule,
+      FormsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
