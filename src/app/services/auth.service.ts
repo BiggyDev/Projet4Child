@@ -16,7 +16,7 @@ export class AuthService {
         client.password = password;
         client.confirmpassword = confirmpassword;
         this.httpClient
-            .post('http://localhost:8000/api/client.json', client)
+            .post('http://localhost:8000/api/clients.json', client)
             .subscribe(
                 () => {
                     window.alert('Succès !');

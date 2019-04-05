@@ -16,9 +16,7 @@ export class LoginService {
         client.email = email;
         client.password = password;
         this.http.get('http://localhost:8000/api/clients');
-        if (client.email === ) {
 
-        }
     }
 
 }
