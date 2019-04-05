@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,11 +12,14 @@ import { MapComponent } from './home/map/map.component';
 import { AuthComponent } from './auth/auth.component';
 import { ReviewComponent } from './home/review/review.component';
 import { AuthService } from './services/auth.service';
+import { LoginService } from './services/login.service';
+import { ProfileclientService } from './services/profileclient.service';
+import { ProfileproService } from './services/profilepro.service';
 import { LoginComponent } from './login/login.component';
 import { ProfileProComponent } from './profiles/profile-pro/profile-pro.component';
 import { ProfilePartComponent } from './profiles/profile-part/profile-part.component';
 import { HeaderProfilesComponent } from './profiles/header-profiles/header-profiles.component';
-import {FormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -31,11 +36,20 @@ import {FormsModule} from '@angular/forms';
     HeaderProfilesComponent
   ],
   imports: [
-      BrowserModule,
-      AppRoutingModule,
-      FormsModule
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [AuthService],
-  bootstrap: [AppComponent]
+  providers: [
+    AuthService,
+    LoginService,
+    ProfileclientService,
+    ProfileproService
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule {}
