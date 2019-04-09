@@ -25,12 +25,12 @@ export class ProfilePartComponent implements OnInit {
   }
 
   addInfos(form: NgForm) {
-    const name = form.value['clientName'];
-    const lastname = form.value['clientLastname'];
-    const phone = form.value['clientPhone'];
-    const age = form.value['clientAge'];
-    const gender = form.value['clientGender'];
-    const description = form.value['clientInfo'];
+    const name = form.value['name'];
+    const lastname = form.value['lastname'];
+    const phone = form.value['phone'];
+    const age = form.value['age'];
+    const gender = form.value['gender'];
+    const description = form.value['info'];
 
     this.profilePartService.addInfos(name, lastname, phone, age, gender, description);
   }

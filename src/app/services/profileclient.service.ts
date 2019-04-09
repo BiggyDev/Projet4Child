@@ -1,9 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class ProfileclientService {
+
   constructor(private http: HttpClient) {}
+
+  apiUrl = environment.apiUrl;
 
   addChild(name: string, lastname: string, age: any, gender: string, info: string) {
       const child = {
@@ -18,7 +22,7 @@ export class ProfileclientService {
       child.age = age;
       child.gender = gender;
       child.info = info;
-      this.http.post('http://localhost:8000/api/children', child)
+      this.http.post(this.apiUrl + 'children', child)
                 .subscribe(
                     () => {
                         window.alert('Succès !');
@@ -48,13 +52,16 @@ export class ProfileclientService {
       infos.age = age;
       infos.gender = gender;
       infos.description = description;
-      this.http.post('http://localhost:8000/api/clients/', infos)
+      const id = 1;
+      this.http.post(this.apiUrl + '/clients/profil/edit/' + id, infos)
           .subscribe(
               () => {
                   window.alert('Succès !');
+                  console.log(infos);
               },
               () => {
                   window.alert('Erreur...');
+                  console.log(infos);
               }
           );
   }

@@ -12,19 +12,31 @@ export class AuthComponent implements OnInit {
 
   constructor(private authService: AuthService) {}
 
-  onSubmitClient(form: NgForm) {
-    const email = form.value['email'];
-    const password = form.value['password'];
-    const confirmpassword = form.value['confirmpassword'];
+  public onSubmitClient(form: NgForm) {
+    const email = form.value.email;
+    const password = form.value.password;
+    const confirmpassword = form.value.confirmpassword;
+    const error = 'Les mots de passes indiqués ne sont pas identiques';
 
-    this.authService.addClient(email, password, confirmpassword);
+    if (password === confirmpassword) {
+      this.authService.addClient(email, password);
+    } else {
+      return error;
+      window.alert(error);
+    }
   }
-  onSubmitProvider(form: NgForm) {
-    const email = form.value['email'];
-    const password = form.value['password'];
-    const confirmpassword = form.value['confirmpassword'];
 
-    this.authService.addProvider(email, password, confirmpassword);
+  public onSubmitProvider(form: NgForm) {
+    const email = form.value.email;
+    const password = form.value.password;
+    const confirmpassword = form.value.confirmpassword;
+    const error = 'Les mots de passes indiqués ne sont pas identiques';
+
+    if (password === confirmpassword) {
+      this.authService.addProvider(email, password);
+    } else {
+      return error;
+    }
   }
 
   ngOnInit() {

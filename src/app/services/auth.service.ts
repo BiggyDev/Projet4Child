@@ -1,49 +1,50 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthService {
 
-    constructor(private httpClient: HttpClient) { }
+    constructor(private http: HttpClient) { }
 
-    addClient(email: string, password: string, confirmpassword: string) {
+    apiUrl = environment.apiUrl;
+
+    public addClient(email: string, password: string) {
         const client = {
             email: '',
-            password: '',
-            confirmpassword: ''
+            password: ''
         };
         client.email = email;
         client.password = password;
-        client.confirmpassword = confirmpassword;
-        this.httpClient
-            .post('http://localhost:8000/api/clients.json', client)
+        this.http.post(this.apiUrl + '/clients/register/' + email + '/' + password, client)
             .subscribe(
                 () => {
                     window.alert('Succès !');
+                    console.log(client);
                 },
                 () => {
                     window.alert('Erreur...');
+                    console.log(client);
                 }
             );
     }
 
-    addProvider(email: string, password: string, confirmpassword: string) {
+    addProvider(email: string, password: string) {
         const provider = {
             email: '',
-            password: '',
-            confirmpassword: ''
+            password: ''
         };
         provider.email = email;
         provider.password = password;
-        provider.confirmpassword = confirmpassword;
-        this.httpClient
-            .post('http://localhost:8000/api/providers', provider)
+        this.http.post( this.apiUrl + '/providers', provider)
             .subscribe(
                 () => {
                     window.alert('Succès !');
+                    console.log(provider);
                 },
                 () => {
                     window.alert('Erreur...');
+                    console.log(provider);
                 }
             );
     }

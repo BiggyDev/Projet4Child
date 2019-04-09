@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class LoginService {
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient) {}
 
-    }
+    apiUrl = environment.apiUrl;
 
     getClient(email: string, password: string) {
         const client = {
@@ -15,7 +16,16 @@ export class LoginService {
         };
         client.email = email;
         client.password = password;
-        this.http.get('http://localhost:8000/api/clients');
+        this.http.get(this.apiUrl + '/clients')
+            .subscribe(
+                () => {
+                    window.alert('Succès');
+                    console.log();
+                },
+                () => {
+                    window.alert('Erreur...');
+                }
+            );
 
     }
 

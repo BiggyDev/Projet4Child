@@ -34,7 +34,6 @@
                         </button>
                     </div>
                     <div class="modal-body">
-
                         <div class="form-group">
                             <label for="clientName">
                                 Votre Pr&eacute;nom :
@@ -54,16 +53,16 @@
                             <input type="text" name="phone" id="clientPhone" class="form-control" required ngModel>
                         </div>
                         <div class="form-group">
-                            <label for="age">
+                            <label for="clientAge">
                                 Votre âge :
                             </label>
-                            <input type="number" name="age" id="age" class="form-control" required ngModel>
+                            <input type="number" name="age" id="clientAge" class="form-control" required ngModel>
                         </div>
                         <div class="form-group">
                             <label for="clientGender">
                                 Votre sexe :
                             </label>
-                            <select name="age" id="clientGender" class="form-control" required ngModel>
+                            <select name="gender" id="clientGender" class="form-control" required ngModel>
                                 <option value="homme">Homme</option>
                                 <option value="femme">Femme</option>
                             </select>
@@ -77,7 +76,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                        <button type="button" class="btn btn-project">Ajouter</button>
+                        <button type="submit" class="btn btn-project" name="submitted" [disabled]="formAddInfos.invalid">Ajouter</button>
                     </div>
                 </form>
             </div>
