@@ -6,4 +6,12 @@
   font-weight: bold;
   font-size: 0.9em; }
 
+.btn-project {
+  background-color: #ff4f5a;
+  color: #FFFFFF; }
+
+.btn-project:hover {
+  background-color: #FFFFFF;
+  color: #ff4f5a; }
+
 /*# sourceMappingURL=profile-pro.component.css.map */

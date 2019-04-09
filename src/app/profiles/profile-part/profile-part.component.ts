@@ -13,24 +13,23 @@ export class ProfilePartComponent implements OnInit {
 
   constructor(private profilePartService: ProfileclientService) { }
 
-  // TODO: Function addChild
   addChild(form: NgForm) {
-    const name = form.value['name'];
-    const lastname = form.value['lastname'];
-    const age = form.value['age'];
-    const gender = form.value['gender'];
-    const info = form.value['info'];
+    const name = form.value.name;
+    const lastname = form.value.lastname;
+    const age = form.value.age;
+    const gender = form.value.gender;
+    const info = form.value.info;
 
     this.profilePartService.addChild(name, lastname, age, gender, info);
   }
 
   addInfos(form: NgForm) {
-    const name = form.value['name'];
-    const lastname = form.value['lastname'];
-    const phone = form.value['phone'];
-    const age = form.value['age'];
-    const gender = form.value['gender'];
-    const description = form.value['info'];
+    const name = form.value.name;
+    const lastname = form.value.lastname;
+    const phone = form.value.phone;
+    const age = form.value.age;
+    const gender = form.value.gender;
+    const description = form.value.info;
 
     this.profilePartService.addInfos(name, lastname, phone, age, gender, description);
   }

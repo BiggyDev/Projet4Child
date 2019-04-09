@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from '../services/login.service';
-import {post} from 'selenium-webdriver/http';
-import {NgForm} from '@angular/forms';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -16,8 +15,8 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(form: NgForm) {
-    const email = form.value['email'];
-    const password = form.value['password'];
+    const email = form.value.email;
+    const password = form.value.password;
 
     this.loginService.getClient(email, password);
   }
