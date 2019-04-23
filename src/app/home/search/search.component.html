@@ -1,20 +1,17 @@
-<!--<div class="row searchFilter">-->
-  <!--<form class="input-group" method="POST">-->
-    <!--<input id="from" type="text" class="form-control calendar" placeholder="De" data-provide="datepicker">-->
-    <!--<input id="to" type="text" class="form-control calendar" name="search" placeholder="A" data-provide="datepicker">-->
-    <!--<input id="where" type="text" class="form-control" name="search" placeholder="Ou?">-->
-    <!--<button id="searchBtn" type="submit"  class="form-control input-group-btn btn-secondary btn-search" value="Rechercher">-->
-      <!--<img class="search-logo " src="../../../assets/img/magnifying-glass.svg" alt="">-->
-    <!--</button>-->
-  <!--</form>-->
-<!--</div>-->
-<form action="">
-<input (keyup)="searchTerm$.next($event.target.value)">
+<div class="row searchFilter">
+  <form class="input-group" method="POST">
+      <!--<input (keyup)="searchTerm.next($event.target.value)" id="de" type="text" class="form-control" name="search" placeholder="De?">-->
+      <!--<input (keyup)="searchTerm.next($event.target.value)" id="a" type="text" class="form-control" name="search" placeholder="a?">-->
+      <input (keyup)="searchTerm.next($event.target.value)" id="where" type="text" class="form-control" name="search" placeholder="Ou?">
+  </form>
+
+</div>
 <ul *ngIf="results">
-  <li *ngFor="let result of results">
-    <a href="{{ result.latest }}" target="_blank">
-      {{ result.name }}
-    </a>
-  </li>
+    <li *ngFor="let result of results">
+        <a href="{{ result._latestValue }}" target="_blank">
+            {{ result.names }}
+            {{ result.version }}
+            {{ result.description}}
+        </a>
+    </li>
 </ul>
-</form>

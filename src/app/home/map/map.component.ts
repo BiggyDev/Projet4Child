@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as L from 'leaflet';
-import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
+import { OpenStreetMapProvider } from 'leaflet-geosearch';
 
 @Component({
   selector: 'app-map',
@@ -19,16 +19,22 @@ export class MapComponent implements OnInit {
       L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
           attribution: 'Nanny Map'
       }).addTo(nannymap);
-      const myIcon = L.icon({
-          iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/images/marker-icon.png'
+      const markerIcon = L.icon({
+          iconUrl: '../../../assets/img/marker.png',
+          iconSize:     [38, 38], // size of the icon
+          iconAnchor:   [22, 37], // point of the icon which will correspond to marker's location
+          shadowAnchor: [4, 62],  // the same for the shadow
+          popupAnchor:  [-3, -76]
       });
-      L.marker([49.4431, 1.0993], {icon: myIcon}).bindPopup('Je suis a rouen').addTo(nannymap).openPopup();
+      const marker = L.marker([49.4431, 1.0993], {icon: markerIcon}).addTo(nannymap).openPopup();
+      marker.bindPopup('Je suis a rouen');
 
       this.http.get('https://opendata.lillemetropole.fr/api/records/1.0/search/?dataset=bornes-podotactiles').subscribe((data: any) => {
           data.records.forEach(podotactile => {
-              L.marker([podotactile.geometry.coordinates[1], podotactile.geometry.coordinates[0]], {icon: myIcon}).addTo(nannymap);
+              L.marker([podotactile.geometry.coordinates[1], podotactile.geometry.coordinates[0]], {icon: markerIcon}).addTo(nannymap);
           });
       });
+
   }
 
 }

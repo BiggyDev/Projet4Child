@@ -12,6 +12,7 @@ import 'rxjs/add/operator/switchMap';
 export class SearchService {
     baseUrl: string = 'https://api.cdnjs.com/libraries';
     queryUrl: string = '?search=';
+    fieldsUrl: string = '&fields=name,version,description';
 
     constructor(private http: HttpClient) { }
 
@@ -23,8 +24,7 @@ export class SearchService {
 
     searchEntries(term) {
         return this.http
-            .get(this.baseUrl + this.queryUrl + term)
-            .map(res => res);
-
+            .get(this.baseUrl + this.queryUrl + term + this.fieldsUrl)
+            .map(res => res)
     }
 }

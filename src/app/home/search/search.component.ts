@@ -10,10 +10,10 @@ import { Subject } from 'rxjs/Subject';
 })
 export class SearchComponent implements OnInit{
     results: Object;
-    searchTerm$ = new Subject<string>();
+    searchTerm = new Subject<string>();
 
     constructor(private searchService: SearchService) {
-        this.searchService.search(this.searchTerm$)
+        this.searchService.search(this.searchTerm)
             .subscribe(data => {
                 this.results = data["results"];
             });
