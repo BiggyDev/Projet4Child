@@ -1,24 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import {LoginService} from '../services/login.service';
-import { NgForm } from '@angular/forms';
+import { LoginService } from '../services/login.service';
+import { Client } from '../client';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+    clients: Client[];
 
-  constructor(private loginService: LoginService) { }
+    constructor(private loginService: LoginService) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+        this.getClients();
+        console.log('Les clients sont ' + this.getClients());
+    }
 
-  onLogin(form: NgForm) {
-    const email = form.value.email;
-    const password = form.value.password;
-
-    this.loginService.getClient(email, password);
-  }
+    getClients() {
+        this.loginService.getClients()
+            .subscribe(clients => this.clients = clients);
+    }
 
 }

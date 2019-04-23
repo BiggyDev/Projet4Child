@@ -1,70 +1,77 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import * as $ from 'jquery';
+import { Client } from '../client';
+import { Provider } from '../provider';
 
 @Component({
-  selector: 'app-auth',
-  templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.scss']
+    selector: 'app-auth',
+    templateUrl: './auth.component.html',
+    styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
+    clients: Client[];
+    providers: Provider[];
 
-  constructor(private authService: AuthService) {}
+    constructor(private authService: AuthService) {}
 
-  public onSubmitClient(form: NgForm) {
-    const email = form.value.email;
-    const password = form.value.password;
-    const confirmpassword = form.value.confirmpassword;
-    const error = 'Les mots de passes indiqués ne sont pas identiques';
-
-    if (password === confirmpassword) {
-      this.authService.addClient(email, password);
-    } else {
-      return error;
-      window.alert(error);
+    addClient(email: string, password: string): void {
+        email = email.trim();
+        password = password.trim();
+        if (!email && !password) { return; }
+        this.authService.addClient(email, password)
+            .subscribe(client => {
+                this.clients.push(client);
+            });
     }
-  }
 
-  public onSubmitProvider(form: NgForm) {
-    const email = form.value.email;
-    const password = form.value.password;
-    const confirmpassword = form.value.confirmpassword;
-    const error = 'Les mots de passes indiqués ne sont pas identiques';
-
-    if (password === confirmpassword) {
-      this.authService.addProvider(email, password);
-    } else {
-      return error;
+    addProvider(email: string, password: string, token: string): void {
+        email = email.trim();
+        password = password.trim();
+        token = this.generate_token(255).trim();
+        if (!email && !password && !token) { return; }
+        this.authService.addProvider({ email, password, token } as Provider)
+            .subscribe(provider => {
+                this.providers.push(provider);
+            });
     }
-  }
 
-  ngOnInit() {
+    private generate_token(length) {
+        const a = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'.split('');
+        const b = [];
+        for (let i = 0; i < length; i++) {
+            const j = (Math.random() * (a.length - 1)).toFixed(0);
+            b[i] = a[j];
+        }
+        return b.join('');
+    }
 
-    $('.sing-in').click(function(e) {
-      const button = $(this);
+    ngOnInit() {
 
-      if (button.hasClass('button-transparent')) {
-        e.preventDefault();
-        $('.floating-content').addClass('active');
-        $('.sing-in-panel').addClass('active');
-        $('.sing-up-panel').removeClass('active');
-      }
+        $('.sing-in').click(function(e) {
+            const button = $(this);
 
-    });
+            if (button.hasClass('button-transparent')) {
+                e.preventDefault();
+                $('.floating-content').addClass('active');
+                $('.sing-in-panel').addClass('active');
+                $('.sing-up-panel').removeClass('active');
+            }
 
-    $('.sing-up').click(function(e) {
-      const button = $(this);
+        });
 
-      if (button.hasClass('button-transparent')) {
-        e.preventDefault();
-        $('.floating-content').removeClass('active');
-        $('.sing-in-panel').removeClass('active');
-        $('.sing-up-panel').addClass('active');
-      }
+        $('.sing-up').click(function(e) {
+            const button = $(this);
 
-    });
-  }
+            if (button.hasClass('button-transparent')) {
+                e.preventDefault();
+                $('.floating-content').removeClass('active');
+                $('.sing-in-panel').removeClass('active');
+                $('.sing-up-panel').addClass('active');
+            }
+
+        });
+    }
 
 
 }

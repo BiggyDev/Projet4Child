@@ -38,31 +38,31 @@
                             <label for="clientName">
                                 Votre Pr&eacute;nom :
                             </label>
-                            <input type="text" name="name" id="clientName" class="form-control" required ngModel>
+                            <input type="text" name="name" id="clientName" class="form-control" ngModel>
                         </div>
                         <div class="form-group">
                             <label for="clientLastname">
                                 Votre Nom :
                             </label>
-                            <input type="text" name="lastname" id="clientLastname" class="form-control" required ngModel>
+                            <input type="text" name="lastname" id="clientLastname" class="form-control" ngModel>
                         </div>
                         <div class="form-group">
                             <label for="clientPhone">
                                 Votre numéro de téléphone :
                             </label>
-                            <input type="text" name="phone" id="clientPhone" class="form-control" required ngModel>
+                            <input type="text" name="phone" id="clientPhone" class="form-control" ngModel>
                         </div>
                         <div class="form-group">
                             <label for="clientAge">
                                 Votre âge :
                             </label>
-                            <input type="number" name="age" id="clientAge" class="form-control" required ngModel>
+                            <input type="number" name="age" id="clientAge" class="form-control" ngModel>
                         </div>
                         <div class="form-group">
                             <label for="clientGender">
                                 Votre sexe :
                             </label>
-                            <select name="gender" id="clientGender" class="form-control" required ngModel>
+                            <select name="gender" id="clientGender" class="form-control" ngModel>
                                 <option value="homme">Homme</option>
                                 <option value="femme">Femme</option>
                             </select>
@@ -71,12 +71,12 @@
                             <label for="clientInfo">
                                 Infos compl&eacute;mentaires :
                             </label>
-                            <textarea name="info" id="clientInfo" class="form-control" required ngModel></textarea>
+                            <textarea name="info" id="clientInfo" class="form-control" ngModel></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                        <button type="submit" class="btn btn-project" name="submitted" [disabled]="formAddInfos.invalid">Ajouter</button>
+                        <button type="submit" class="btn btn-project" name="submitted">Ajouter</button>
                     </div>
                 </form>
             </div>
@@ -131,7 +131,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                        <button type="button" class="btn btn-project">Ajouter</button>
+                        <button type="button" class="btn btn-project" [disabled]="formAddChild.invalid">Ajouter</button>
                     </div>
                 </form>
             </div>
