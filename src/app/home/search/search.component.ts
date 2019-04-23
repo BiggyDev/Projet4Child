@@ -8,14 +8,14 @@ import { Subject } from 'rxjs/Subject';
   styleUrls: ['./search.component.sass'],
   providers: [SearchService]
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit{
     results: Object;
     searchTerm$ = new Subject<string>();
 
     constructor(private searchService: SearchService) {
         this.searchService.search(this.searchTerm$)
-            .subscribe(results => {
-                this.results = results.results;
+            .subscribe(data => {
+                this.results = data["results"];
             });
     }
 
