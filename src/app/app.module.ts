@@ -38,7 +38,7 @@ import { AgmCoreModule } from '@agm/core';
     BrowserModule,
     HttpClientModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAgy8BDgJN4l-8NeB4B8q1dnsvKbDx4noU'
+      apiKey: 'AIzaSyDAopkC8WFvI3UD0z-nyQmdVoZ81QVGJlk'
       })
   ],
   providers: [AuthService],

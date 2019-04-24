@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ViewChild } from '@angular/core';
-import {} from 'googlemaps';
+import { Component, OnInit, ViewChild, ElementRef, NgZone} from '@angular/core';
+import { MapsAPILoader, MouseEvent } from '@agm/core';
 
 @Component({
   selector: 'app-map',
@@ -13,9 +12,41 @@ export class MapComponent implements OnInit {
     longitude: number;
     zoom: number;
     mapType = 'roadmap';
+    address: string;
+    private geoCoder;
+
+    @ViewChild('search')
+    public searchElementRef: ElementRef;
+
+    constructor(
+        private mapsAPILoader: MapsAPILoader,
+        private ngZone: NgZone
+    ) { }
 
     ngOnInit(){
-        this.setCurrentLocation();
+        this.mapsAPILoader.load().then(() => {
+            this.setCurrentLocation();
+            this.geoCoder = new google.maps.Geocoder;
+
+            let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+                types: ["address"]
+            });
+            autocomplete.addListener("place_changed", () => {
+                this.ngZone.run(() => {
+                    let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+
+                    if (place.geometry === undefined || place.geometry === null) {
+                        return;
+                    }
+
+                    this.latitude = place.geometry.location.lat();
+                    this.longitude = place.geometry.location.lng();
+                    this.zoom = 8;
+                });
+            });
+        });
+
+
     }
     private setCurrentLocation() {
         if ('geolocation' in navigator) {
@@ -23,38 +54,34 @@ export class MapComponent implements OnInit {
                 this.latitude = position.coords.latitude;
                 this.longitude = position.coords.longitude;
                 this.zoom = 15;
+                this.getAddress(this.latitude, this.longitude);
             });
         }
     }
 
+    markerDragEnd($event: MouseEvent) {
+        console.log($event);
+        this.latitude = $event.coords.lat;
+        this.longitude = $event.coords.lng;
+        this.getAddress(this.latitude, this.longitude);
+    }
+
+    getAddress(latitude, longitude) {
+        this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
+            console.log(results);
+            console.log(status);
+            if (status === 'OK') {
+                if (results[0]) {
+                    this.zoom = 12;
+                    this.address = results[0].formatted_address;
+                } else {
+                    window.alert('Aucuns résultats trouvés');
+                }
+            } else {
+                window.alert('Geocoder a échoué : ' + status);
+            }
+
+        });
+    }
+
 }
-// export class MapComponent implements OnInit {
-//
-//   constructor(private http: HttpClient){
-//     }
-//
-//   ngOnInit() {
-//       const nannymap = L.map('map').setView([49.4431, 1.0993], 12);
-//
-//       L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-//           attribution: 'Nanny Map'
-//       }).addTo(nannymap);
-//       const markerIcon = L.icon({
-//           iconUrl: '../../../assets/img/marker.png',
-//           iconSize:     [38, 38], // size of the icon
-//           iconAnchor:   [22, 37], // point of the icon which will correspond to marker's location
-//           shadowAnchor: [4, 62],  // the same for the shadow
-//           popupAnchor:  [-3, -76]
-//       });
-//       const marker = L.marker([49.4431, 1.0993], {icon: markerIcon}).addTo(nannymap).openPopup();
-//       marker.bindPopup('Je suis a rouen');
-//
-//       this.http.get('https://opendata.lillemetropole.fr/api/records/1.0/search/?dataset=bornes-podotactiles').subscribe((data: any) => {
-//           data.records.forEach(podotactile => {
-//               L.marker([podotactile.geometry.coordinates[1], podotactile.geometry.coordinates[0]], {icon: markerIcon}).addTo(nannymap);
-//           });
-//       });
-//
-//   }
-//
-// }

@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAAA,OAAO;EAEL,MAAM,EAAE,KAAK;EACb,KAAK,EAAE,GAAG;EAEV,KAAK,EAAE,KAAK",
+"mappings": "AAAA,OAAO;EAEL,MAAM,EAAE,KAAK;EACb,KAAK,EAAE,GAAG;EAEV,KAAK,EAAE,KAAK;EACZ,OAAO,EAAE,IAAI",
 "sources": ["map.component.sass"],
 "names": [],
 "file": "map.component.css"
