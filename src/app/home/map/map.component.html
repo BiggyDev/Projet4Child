@@ -1,4 +1,9 @@
 <!-- Déclaration du conteneur de la carte avec l'id "frugalmap" -->
-<div id="map">
+<!--<div id="map">-->
 
-</div>
+<!--</div>-->
+
+<agm-map [latitude]='latitude' [longitude]='longitude'
+         [mapTypeId]='mapType'>
+    <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+</agm-map>

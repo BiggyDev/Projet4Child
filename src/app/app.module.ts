@@ -14,7 +14,9 @@ import { LoginComponent } from './login/login.component';
 import { ProfileProComponent } from './profiles/profile-pro/profile-pro.component';
 import { ProfilePartComponent } from './profiles/profile-part/profile-part.component';
 import { HeaderProfilesComponent } from './profiles/header-profiles/header-profiles.component';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import { AgmCoreModule } from '@agm/core';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +36,10 @@ import {HttpClientModule} from '@angular/common/http'
     BrowserModule,
     AppRoutingModule,
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAgy8BDgJN4l-8NeB4B8q1dnsvKbDx4noU'
+      })
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
