@@ -25,25 +25,14 @@ export class AuthComponent implements OnInit {
             });
     }
 
-    addProvider(email: string, password: string, token: string): void {
+    addProvider(email: string, password: string): void {
         email = email.trim();
         password = password.trim();
-        token = this.generate_token(255).trim();
-        if (!email && !password && !token) { return; }
-        this.authService.addProvider({ email, password, token } as Provider)
+        if (!email && !password) { return; }
+        this.authService.addProvider(email, password)
             .subscribe(provider => {
                 this.providers.push(provider);
             });
-    }
-
-    private generate_token(length) {
-        const a = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'.split('');
-        const b = [];
-        for (let i = 0; i < length; i++) {
-            const j = (Math.random() * (a.length - 1)).toFixed(0);
-            b[i] = a[j];
-        }
-        return b.join('');
     }
 
     ngOnInit() {

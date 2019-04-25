@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
     getClients() {
         this.loginService.getClients()
-            .subscribe(clients => this.clients = clients);
+            .subscribe();
     }
 
 }

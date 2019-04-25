@@ -10,7 +10,7 @@ import { MessageService } from './message.service';
 const httpOptions = {
     headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer JWT'
+        Authorization: 'JWT'
     })
 };
 
@@ -32,8 +32,8 @@ export class AuthService {
             );
     }
 
-    public addProvider(provider: Provider): Observable<Provider> {
-        return this.http.post(this.apiUrl + '/providers/register/', provider, httpOptions)
+    public addProvider(email: string, password: string): Observable<Provider> {
+        return this.http.post(this.apiUrl + '/providers/' + email + '/' + password, { email, password }, httpOptions)
             .pipe(
                 tap((newProvider: Provider) => this.log(`added provider w/ id=${newProvider.id}`)),
                 catchError(this.handleError<Provider>('addProvider'))
@@ -50,7 +50,7 @@ export class AuthService {
         return (error: any): Observable<T> => {
 
             // TODO: send the error to remote logging infrastructure
-            // console.error(error); // log to console instead
+            console.error(error); // log to console instead
 
             // TODO: better job of transforming error for user consumption
             this.log(`${operation} failed: ${error.message}`);
