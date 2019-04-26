@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, NgZone} from '@angular/core';
 import { MapsAPILoader, MouseEvent } from '@agm/core';
 import { Observable } from 'rxjs/Observable';
 import { MapService } from '../../services/map.service';
+import { google } from '@agm/core/services/google-maps-types';
 
 
 @Component({
