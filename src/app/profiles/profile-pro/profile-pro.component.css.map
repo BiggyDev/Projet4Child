@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAGA,iBAAiB;EACf,UAAU,EAJI,OAAO;;AAMvB,SAAS;EACP,MAAM,EAAE,IAAI;EACZ,WAAW,EAAE,IAAI;EACjB,SAAS,EAAE,KAAK",
+"mappings": "AAGA,iBAAiB;EACf,UAAU,EAJI,OAAO;;AAMvB,SAAS;EACP,MAAM,EAAE,IAAI;EACZ,WAAW,EAAE,IAAI;EACjB,SAAS,EAAE,KAAK;;AAElB,YAAY;EACV,gBAAgB,EAZF,OAAO;EAarB,KAAK,EAZW,OAAO;;AAczB,kBAAkB;EAChB,gBAAgB,EAfA,OAAO;EAgBvB,KAAK,EAjBS,OAAO",
 "sources": ["profile-pro.component.sass"],
 "names": [],
 "file": "profile-pro.component.css"

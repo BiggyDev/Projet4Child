@@ -1,42 +1,66 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import * as $ from 'jquery';
+import { Client } from '../client';
+import { Provider } from '../provider';
 
 @Component({
-  selector: 'app-auth',
-  templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.scss']
+    selector: 'app-auth',
+    templateUrl: './auth.component.html',
+    styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
+    clients: Client[];
+    providers: Provider[];
 
-  constructor(private authService: AuthService) { }
+    constructor(private authService: AuthService) {}
 
-  ngOnInit() {
+    addClient(email: string, password: string): void {
+        email = email.trim();
+        password = password.trim();
+        if (!email && !password) { return; }
+        this.authService.addClient(email, password)
+            .subscribe(client => {
+                this.clients.push(client);
+            });
+    }
 
-    $('.sing-in').click(function(e) {
-      const button = $(this);
+    addProvider(email: string, password: string): void {
+        email = email.trim();
+        password = password.trim();
+        if (!email && !password) { return; }
+        this.authService.addProvider(email, password)
+            .subscribe(provider => {
+                this.providers.push(provider);
+            });
+    }
 
-      if (button.hasClass('button-transparent')) {
-        e.preventDefault();
-        $('.floating-content').addClass('active');
-        $('.sing-in-panel').addClass('active');
-        $('.sing-up-panel').removeClass('active');
-      }
+    ngOnInit() {
 
-    });
+        $('.sing-in').click(function(e) {
+            const button = $(this);
 
-    $('.sing-up').click(function(e) {
-      const button = $(this);
+            if (button.hasClass('button-transparent')) {
+                e.preventDefault();
+                $('.floating-content').addClass('active');
+                $('.sing-in-panel').addClass('active');
+                $('.sing-up-panel').removeClass('active');
+            }
 
-      if (button.hasClass('button-transparent')) {
-        e.preventDefault();
-        $('.floating-content').removeClass('active');
-        $('.sing-in-panel').removeClass('active');
-        $('.sing-up-panel').addClass('active');
-      }
+        });
 
-    });
-  }
+        $('.sing-up').click(function(e) {
+            const button = $(this);
+
+            if (button.hasClass('button-transparent')) {
+                e.preventDefault();
+                $('.floating-content').removeClass('active');
+                $('.sing-in-panel').removeClass('active');
+                $('.sing-up-panel').addClass('active');
+            }
+
+        });
+    }
 
 
 }

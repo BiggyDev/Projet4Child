@@ -1,7 +1,12 @@
 {
 "version": 3,
+<<<<<<< HEAD
 "mappings": "AAAA,IAAI;EAEF,MAAM,EAAE,KAAK;EACb,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,IAAI;EACZ,KAAK,EAAE,KAAK",
 "sources": ["map.component.sass"],
+=======
+"mappings": "",
+"sources": [],
+>>>>>>> develop
 "names": [],
 "file": "map.component.css"
 }

@@ -8,17 +8,77 @@
       <div class="card-body">
         <img src="../../../assets/img/iconfinder_Protection_icon_2541672.png" alt="profile pic" class="float-left" id="profilepic">
         <div class="card-text float-left text-left ml-2" id="infos">
-          <p>Un professionnel</p>
-          <p>De ses morts</p>
-          <p>Rue des enculés</p>
+          <p>Paul</p>
+          <p>Turpin</p>
+          <p>28 Place Saint Marc, Rouen</p>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="container">
-    <div class="progress">
-      <div class="progress-bar progress-profile" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+  <div class="container text-center mt-3 mb-3">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-project btn-lg" data-toggle="modal" data-target="#addInfosModal">Ajouter des infos au profil</button>
+  </div>
+
+  <!-- Modal Infos -->
+  <div class="modal fade" id="addInfosModal" tabindex="-1" role="dialog" aria-labelledby="InfosModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form (ngSubmit)="addInfos(formAddInfos)" #formAddInfos="ngForm">
+          <div class="modal-header">
+            <h5 class="modal-title" id="InfosModalLabel">Ajouter des infos :</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="clientName">
+                Votre Pr&eacute;nom :
+              </label>
+              <input type="text" name="name" id="clientName" class="form-control" required ngModel>
+            </div>
+            <div class="form-group">
+              <label for="clientLastname">
+                Votre Nom :
+              </label>
+              <input type="text" name="lastname" id="clientLastname" class="form-control" required ngModel>
+            </div>
+            <div class="form-group">
+              <label for="clientPhone">
+                Votre numéro de téléphone :
+              </label>
+              <input type="text" name="phone" id="clientPhone" class="form-control" required ngModel>
+            </div>
+            <div class="form-group">
+              <label for="clientAge">
+                Votre âge :
+              </label>
+              <input type="number" name="age" id="clientAge" class="form-control" required ngModel>
+            </div>
+            <div class="form-group">
+              <label for="clientGender">
+                Votre sexe :
+              </label>
+              <select name="gender" id="clientGender" class="form-control" required ngModel>
+                <option value="homme">Homme</option>
+                <option value="femme">Femme</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="clientInfo">
+                Infos compl&eacute;mentaires :
+              </label>
+              <textarea name="info" id="clientInfo" class="form-control" ngModel></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            <button type="submit" class="btn btn-project" name="submitted" [disabled]="formAddInfos.invalid">Ajouter</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 
