@@ -5,7 +5,7 @@ import { Client } from '../client';
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss']
+    styleUrls: ['./login.component.sass']
 })
 export class LoginComponent implements OnInit {
     clients: Client[];

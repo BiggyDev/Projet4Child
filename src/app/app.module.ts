@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './home/header/header.component';
 import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './home/search/search.component';
-import { MapComponent } from './home/map/map.component';
 import { AuthComponent } from './auth/auth.component';
 import { ReviewComponent } from './home/review/review.component';
 import { AuthService } from './services/auth.service';
@@ -19,6 +18,9 @@ import { LoginComponent } from './login/login.component';
 import { ProfileProComponent } from './profiles/profile-pro/profile-pro.component';
 import { ProfilePartComponent } from './profiles/profile-part/profile-part.component';
 import { HeaderProfilesComponent } from './profiles/header-profiles/header-profiles.component';
+import { MapComponent } from './home/map/map.component';
+import { AgmCoreModule } from '@agm/core';
+
 
 
 @NgModule({
@@ -27,20 +29,23 @@ import { HeaderProfilesComponent } from './profiles/header-profiles/header-profi
     HeaderComponent,
     HomeComponent,
     SearchComponent,
-    MapComponent,
     AuthComponent,
     ReviewComponent,
     LoginComponent,
     ProfileProComponent,
     ProfilePartComponent,
-    HeaderProfilesComponent
+    HeaderProfilesComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDAopkC8WFvI3UD0z-nyQmdVoZ81QVGJlk'
+      })
   ],
   providers: [
     AuthService,
