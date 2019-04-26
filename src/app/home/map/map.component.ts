@@ -1,10 +1,14 @@
 import { Component, OnInit, ViewChild, ElementRef, NgZone} from '@angular/core';
 import { MapsAPILoader, MouseEvent } from '@agm/core';
+import { Observable } from "rxjs/Observable";
+import { MapService } from '../../services/map.service';
+
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.sass']
+  styleUrls: ['./map.component.sass'],
+  providers: [MapService]
 })
 
 export class MapComponent implements OnInit {
@@ -14,13 +18,15 @@ export class MapComponent implements OnInit {
     mapType = 'roadmap';
     address: string;
     private geoCoder;
+    markers$: Observable<any>;
 
     @ViewChild('search')
     public searchElementRef: ElementRef;
 
     constructor(
         private mapsAPILoader: MapsAPILoader,
-        private ngZone: NgZone
+        private ngZone: NgZone,
+        private mapService: MapService
     ) { }
 
     ngOnInit(){
@@ -45,15 +51,17 @@ export class MapComponent implements OnInit {
                 });
             });
         });
-
-
+        this.markers$ = this.getLocations();
+    }
+    getLocations(): Observable<any> {
+        return this.mapService.getLocations();
     }
     private setCurrentLocation() {
         if ('geolocation' in navigator) {
             navigator.geolocation.getCurrentPosition((position) => {
                 this.latitude = position.coords.latitude;
                 this.longitude = position.coords.longitude;
-                this.zoom = 15;
+                this.zoom = 7;
                 this.getAddress(this.latitude, this.longitude);
             });
         }
@@ -80,7 +88,6 @@ export class MapComponent implements OnInit {
             } else {
                 window.alert('Geocoder a échoué : ' + status);
             }
-
         });
     }
 

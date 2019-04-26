@@ -1,7 +1,10 @@
 agm-map {
-  height: 600px;
-  width: 70%;
+  height: 100%;
+  width: 90%;
   float: right;
   padding: 50px; }
+
+.form-group {
+  height: 80vh; }
 
 /*# sourceMappingURL=map.component.css.map */
