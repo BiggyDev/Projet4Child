@@ -1,7 +1,11 @@
 {
 "version": 3,
 <<<<<<< HEAD
+<<<<<<< HEAD
 "mappings": "AAAA,IAAI;EAEF,MAAM,EAAE,KAAK;EACb,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,IAAI;EACZ,KAAK,EAAE,KAAK",
+=======
+"mappings": "AAAA,OAAO;EAEL,MAAM,EAAE,IAAI;EACZ,KAAK,EAAE,GAAG;EAEV,KAAK,EAAE,KAAK;EACZ,OAAO,EAAE,IAAI;;AAEf,WAAW;EAET,MAAM,EAAE,IAAI",
+>>>>>>> 2320d1e72cc99e6554a3babe70b8358fa59a224d
 "sources": ["map.component.sass"],
 =======
 "mappings": "",

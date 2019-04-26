@@ -1,60 +1,96 @@
-import {Component, OnInit} from '@angular/core';
-import { ViewChild } from '@angular/core';
-import * as maps from 'googlemaps';
+import { Component, OnInit, ViewChild, ElementRef, NgZone} from '@angular/core';
+import { MapsAPILoader, MouseEvent } from '@agm/core';
+import { Observable } from 'rxjs/Observable';
+import { MapService } from '../../services/map.service';
+
 
 @Component({
     selector: 'app-map',
     templateUrl: './map.component.html',
-    styleUrls: ['./map.component.sass']
+    styleUrls: ['./map.component.sass'],
+    providers: [MapService]
 })
-export class MapComponent implements OnInit {
 
-    @ViewChild('map') mapElement: any;
-    map: google.maps.Map;
+export class MapComponent implements OnInit {
+    latitude: number;
+    longitude: number;
+    zoom: number;
+    mapType = 'roadmap';
+    address: string;
+    private geoCoder;
+    markers$: Observable<any>;
+
+    @ViewChild('search')
+    public searchElementRef: ElementRef;
+
+    constructor(
+        private mapsAPILoader: MapsAPILoader,
+        private ngZone: NgZone,
+        private mapService: MapService
+    ) {
+    }
 
     ngOnInit() {
-        setTimeout(() => {
-            const mapProperties = {
-                center: new google.maps.LatLng(35.2271, -80.8431),
-                zoom: 15,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            this.map = new google.maps.Map(this.mapElement.nativeElement, mapProperties);
-        }, 1000);
+        this.mapsAPILoader.load().then(() => {
+            this.setCurrentLocation();
+            this.geoCoder = new google.maps.Geocoder();
+
+            const autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+                types: ['address']
+            });
+            autocomplete.addListener('place_changed', () => {
+                this.ngZone.run(() => {
+                    const place: google.maps.places.PlaceResult = autocomplete.getPlace();
+
+                    if (place.geometry === undefined || place.geometry === null) {
+                        return;
+                    }
+
+                    this.latitude = place.geometry.location.lat();
+                    this.longitude = place.geometry.location.lng();
+                    this.zoom = 8;
+                });
+            });
+        });
+        this.markers$ = this.getLocations();
+    }
+
+    getLocations(): Observable<any> {
+        return this.mapService.getLocations();
+    }
+
+    private setCurrentLocation() {
+        if ('geolocation' in navigator) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                this.latitude = position.coords.latitude;
+                this.longitude = position.coords.longitude;
+                this.zoom = 7;
+                this.getAddress(this.latitude, this.longitude);
+            });
+        }
+    }
+
+    markerDragEnd($event: MouseEvent) {
+        console.log($event);
+        this.latitude = $event.coords.lat;
+        this.longitude = $event.coords.lng;
+        this.getAddress(this.latitude, this.longitude);
+    }
+
+    getAddress(latitude, longitude) {
+        this.geoCoder.geocode({location: {lat: latitude, lng: longitude}}, (results, status) => {
+            console.log(results);
+            console.log(status);
+            if (status === 'OK') {
+                if (results[0]) {
+                    this.zoom = 12;
+                    this.address = results[0].formatted_address;
+                } else {
+                    window.alert('Aucuns résultats trouvés');
+                }
+            } else {
+                window.alert('Geocoder a échoué : ' + status);
+            }
+        });
     }
 }
-// @Component({
-//   selector: 'app-map',
-//   templateUrl: './map.component.html',
-//   styleUrls: ['./map.component.sass']
-// })
-// export class MapComponent implements OnInit {
-//
-//   constructor(private http: HttpClient){
-//     }
-//
-//   ngOnInit() {
-//       const nannymap = L.map('map').setView([49.4431, 1.0993], 12);
-//
-//       L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-//           attribution: 'Nanny Map'
-//       }).addTo(nannymap);
-//       const markerIcon = L.icon({
-//           iconUrl: '../../../assets/img/marker.png',
-//           iconSize:     [38, 38], // size of the icon
-//           iconAnchor:   [22, 37], // point of the icon which will correspond to marker's location
-//           shadowAnchor: [4, 62],  // the same for the shadow
-//           popupAnchor:  [-3, -76]
-//       });
-//       const marker = L.marker([49.4431, 1.0993], {icon: markerIcon}).addTo(nannymap).openPopup();
-//       marker.bindPopup('Je suis a rouen');
-//
-//       this.http.get('https://opendata.lillemetropole.fr/api/records/1.0/search/?dataset=bornes-podotactiles').subscribe((data: any) => {
-//           data.records.forEach(podotactile => {
-//               L.marker([podotactile.geometry.coordinates[1], podotactile.geometry.coordinates[0]], {icon: markerIcon}).addTo(nannymap);
-//           });
-//       });
-//
-//   }
-//
-// }

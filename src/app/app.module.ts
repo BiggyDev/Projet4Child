@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {Component, NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -19,6 +19,8 @@ import { ProfileProComponent } from './profiles/profile-pro/profile-pro.componen
 import { ProfilePartComponent } from './profiles/profile-part/profile-part.component';
 import { HeaderProfilesComponent } from './profiles/header-profiles/header-profiles.component';
 import { MapComponent } from './home/map/map.component';
+import { AgmCoreModule } from '@agm/core';
+
 
 
 @NgModule({
@@ -40,7 +42,10 @@ import { MapComponent } from './home/map/map.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDAopkC8WFvI3UD0z-nyQmdVoZ81QVGJlk'
+      })
   ],
   providers: [
     AuthService,
