@@ -1,0 +1,175 @@
+<app-header-profiles></app-header-profiles>
+<section id="profilePro" class="mt-5">
+    <div class="container mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-uppercase text-center">Mon profil</h2>
+            </div>
+            <div class="card-body">
+                <img src="../../../assets/img/iconfinder_girl_avatar_child_kid_4043250.png" alt="profile pic" class="float-left" id="profilepic">
+                <div class="card-text float-left text-left ml-2" id="infos">
+                    <p>Vincent</p>
+                    <p>Carpentier</p>
+                    <p>28 place Saint Marc, Rouen</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container text-center">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-project btn-lg mr-3" data-toggle="modal" data-target="#addInfosModal">Ajouter des infos au profil</button>
+        <button type="button" class="btn btn-project btn-lg" data-toggle="modal" data-target="#addChildModal">Ajouter un enfant</button>
+    </div>
+
+    <!-- Modal Infos -->
+    <div class="modal fade" id="addInfosModal" tabindex="-1" role="dialog" aria-labelledby="InfosModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form (ngSubmit)="addInfos(formAddInfos)" #formAddInfos="ngForm">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="InfosModalLabel">Ajouter des infos :</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="clientName">
+                                Votre Pr&eacute;nom :
+                            </label>
+                            <input type="text" name="name" id="clientName" class="form-control" ngModel>
+                        </div>
+                        <div class="form-group">
+                            <label for="clientLastname">
+                                Votre Nom :
+                            </label>
+                            <input type="text" name="lastname" id="clientLastname" class="form-control" ngModel>
+                        </div>
+                        <div class="form-group">
+                            <label for="clientPhone">
+                                Votre numéro de téléphone :
+                            </label>
+                            <input type="text" name="phone" id="clientPhone" class="form-control" ngModel>
+                        </div>
+                        <div class="form-group">
+                            <label for="clientAge">
+                                Votre âge :
+                            </label>
+                            <input type="number" name="age" id="clientAge" class="form-control" ngModel>
+                        </div>
+                        <div class="form-group">
+                            <label for="clientGender">
+                                Votre sexe :
+                            </label>
+                            <select name="gender" id="clientGender" class="form-control" ngModel>
+                                <option value="homme">Homme</option>
+                                <option value="femme">Femme</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="clientInfo">
+                                Infos compl&eacute;mentaires :
+                            </label>
+                            <textarea name="info" id="clientInfo" class="form-control" ngModel></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn btn-project" name="submitted">Ajouter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Child -->
+    <div class="modal fade" id="addChildModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form (ngSubmit)="addChild(formAddChild)" #formAddChild="ngForm">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ajouter un enfant :</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name">
+                                Pr&eacute;nom de l'enfant :
+                            </label>
+                            <input type="text" name="name" id="name" class="form-control" required ngModel>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">
+                                Nom de l'enfant :
+                            </label>
+                            <input type="text" name="lastname" id="lastname" class="form-control" required ngModel>
+                        </div>
+                        <div class="form-group">
+                            <label for="age">
+                                Age de l'enfant :
+                            </label>
+                            <input type="number" name="age" id="age" class="form-control" required ngModel>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">
+                                Sexe de l'enfant :
+                            </label>
+                            <select name="age" id="gender" class="form-control" required ngModel>
+                                <option value="homme">Homme</option>
+                                <option value="femme">Femme</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="info">
+                                Infos complémentaires sur l'enfant :
+                            </label>
+                            <textarea name="info" id="info" class="form-control" placeholder="Habitudes, Allergies éventuelles, etc.." required ngModel></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                        <button type="button" class="btn btn-project" [disabled]="formAddChild.invalid">Ajouter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-uppercase text-center">Mes enfants</h2>
+            </div>
+            <div class="card-body">
+                <div class="card-text text-left mr-5" id="children">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-uppercase text-center">Mes contacts d'urgence</h2>
+            </div>
+            <div class="card-body">
+                <div class="card-text text-left float-left mr-5" id="contact">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </div>
+                <div class="card-text text-left">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

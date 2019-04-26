@@ -1,0 +1,17 @@
+<div class="row searchFilter">
+  <form class="input-group" method="POST">
+      <!--<input (keyup)="searchTerm.next($event.target.value)" id="de" type="text" class="form-control" name="search" placeholder="De?">-->
+      <!--<input (keyup)="searchTerm.next($event.target.value)" id="a" type="text" class="form-control" name="search" placeholder="a?">-->
+      <input (keyup)="searchTerm.next($event.target.value)" id="where" type="text" class="form-control" name="search" placeholder="Ou?">
+  </form>
+
+</div>
+<ul *ngIf="results">
+    <li *ngFor="let result of results">
+        <a href="{{ result._latestValue }}" target="_blank">
+            {{ result.names }}
+            {{ result.version }}
+            {{ result.description}}
+        </a>
+    </li>
+</ul>

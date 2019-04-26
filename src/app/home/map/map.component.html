@@ -1,0 +1,17 @@
+<div class="container">
+
+    <div class="form-group text-center">
+        <label>Entrez une adresse
+            <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
+        </label>
+
+
+    <agm-map [latitude]='latitude' [longitude]='longitude'
+             [mapTypeId]='mapType'>
+            <agm-marker [markerDraggable]="true" (dragEnd)="markerDragEnd($event)" [latitude]="latitude" [longitude]="longitude" ></agm-marker>
+            <div *ngFor="let marker of markers;">
+                <agm-marker [longitude]="marker.longitude" [iconUrl]="'http://www.focusmprod.com/wp-content/themes/supersized/images/pin.png'"></agm-marker>
+            </div>
+    </agm-map>
+    </div>
+</div>
